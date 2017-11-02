@@ -6,14 +6,24 @@
  <div class="navbar-header">
      
 
- <a class="navbar-brand" href="index">Pinterested</a>
+ <%=link_to 'Pinterested',root_path, class: 'navbar-brand' %>
  </div>
  <!-- Collect the nav links, forms, and other content for toggling -->
  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
- <ul class="nav navbar-nav">
-  <li><%= link_to 'Home', root_path, class: 'btn btn-primary' %></li>
-  <li><%= link_to 'About Us', home_about_path, class: 'btn btn-warning' %></li>
+ <ul class="nav navbar-nav navbar-right">
+  <li><%= link_to 'Home', root_path %></li>
+  <li><%= link_to 'About Us', home_about_path %></li>
+  
+  <% if user_signed_in? %>
+  <li><%=link_to'Add Pin', new_pin_path %></li>
+  <li><%= link_to 'Log out', destroy_user_session_path , method: :delete %></li>
+  <li><%= link_to 'Edit profile',  edit_user_registration_path %></li>
+  <li><%= link_to "List pins", pins_path %></li>
+   <% else %>
+   <li><%= link_to 'Login' , new_user_session_path %></li>
+  <li><%=link_to 'join' , new_user_registration_path %></li>
  </ul>
+ <% end %>
  </div><!-- /.navbar-collapse -->
  </div><!-- /.container -->
  </nav>
