@@ -11,15 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101205416) do
+ActiveRecord::Schema.define(version: 20171106233248) do
 
   create_table "pins", force: :cascade do |t|
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
-add index "pins",["user_id"], name:"index_pins_on_user_id"
+
+  add_index "pins", ["user_id"], name: "index_pins_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
