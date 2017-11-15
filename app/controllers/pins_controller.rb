@@ -4,8 +4,9 @@ class PinsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /pins
   # GET /pins.json
+  
   def index
-    @pins = Pin.all
+     @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10) # (MM) changed per_page to 10; you can change this to whatever you like.
   end
 
   # GET /pins/1
@@ -75,3 +76,5 @@ class PinsController < ApplicationController
       params.require(:pin).permit(:description,:image)
     end
 end
+
+ 

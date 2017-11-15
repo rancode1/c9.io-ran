@@ -2,15 +2,23 @@
 
 <h1>Listing Pins</h1>
 
+<div id="pins">
   <% @pins.each do |pin| %>
-    <%= pin.description %><br>
-    <%= image_tag pin.image.url(:medium) %><br>
-    <%= link_to 'Show', pin %>
-    <% if pin.user == current_user %>
-    <%= link_to 'Edit', edit_pin_path(pin) %>
-    <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
+    
+    <div class="box">
+      <%= pin.description %><br>
+      <%= image_tag pin.image.url(:medium) %><br>
+      <%= link_to 'Show', pin %>
+    
+      <% if pin.user == current_user %>
+      <%= link_to 'Edit', edit_pin_path(pin) %>
+      <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+      <% end %>
+      </br>
+    </div>
   <% end %>
-<br>
+</div>
 
-<%= link_to 'New Pin', new_pin_path %>
+<div class="center">
+   <%= will_paginate @pins, renderer: BootstrapPagination::Rails %>
+</div>
