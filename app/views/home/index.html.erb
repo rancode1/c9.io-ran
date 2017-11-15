@@ -3,12 +3,11 @@
 <div class='jumbotron center'>
  <h1>Welcome to My pinterested App</h1>
   <p>raneel photography collection</p>
-  <p>Stay tuned for more portrait photo session.It will be <strong> mind </strong> blowing!</p>
+  <p>Stay tuned for more portrait photo session.It will be <strong> mind </strong> blowing!</p><hr/>
     <% if user_signed_in? %>
-  <%=link_to 'Edit profile',  edit_user_registration_path%>
   <%= link_to 'Log out' , destroy_user_session_path ,method: :delete ,  class: 'btn btn-primary' %>  
   <%=link_to "List pins",pins_path, class: 'btn btn-default' %>
-  <% else %>
+  <% else %> 
   <%= link_to 'Login' , new_user_session_path , class: 'btn btn-primary' %>
   <%=link_to 'join' , new_user_registration_path , class: 'btn btn-primary'%>
   <% end %>
